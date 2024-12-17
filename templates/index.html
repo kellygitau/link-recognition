@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="blog-slider">
+    <div class="blog-slider__wrp swiper-wrapper">
+      {% for post in posts %}
+      <div class="blog-slider__item swiper-slide">
+        <div class="blog-slider__img">
+          <img
+            src="{{ post.image.url }}"
+            alt=""
+          />
+        </div>
+        <div class="blog-slider__content">
+          <span class="blog-slider__code">{{ post.date }}</span>
+          <div class="blog-slider__title">{{ post.title }}</div>
+          <div class="blog-slider__text">
+            {% comment %} {{ post.text }} {% endcomment %}
+          </div>
+          <a href="{% url 'post_detail' post.pk %}" class="blog-slider__button">READ MORE</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="blog-slider__pagination"></div>
+  </div>
+{% endblock content %}

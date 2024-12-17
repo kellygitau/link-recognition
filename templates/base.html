@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="shortcut icon" href="{% static 'b.ico' %}" type="image/ico" />
+    <link rel="stylesheet" href="{% static 'assets/cool.css' %}" />
+    <title>Cool Blog</title>
+  </head>
+  <body>
+    {% block content %}{% endblock content %}
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      var swiper = new Swiper(".blog-slider", {
+        spaceBetween: 30,
+        effect: "fade",
+        loop: true,
+        mousewheel: {
+          invert: false,
+        },
+        // autoHeight: true,
+        pagination: {
+          el: ".blog-slider__pagination",
+          clickable: true,
+        },
+      });
+    </script>
+  </body>
+</html>

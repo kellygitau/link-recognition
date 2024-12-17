@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form_container">  
+    <form id="contact" action="" method="post">
+      <h3>Add a new blog post</h3>
+      <fieldset>
+        {{ form.title }}
+      </fieldset>
+      <fieldset>
+        {{ form.author }}
+      </fieldset>
+      <fieldset>
+        {{ form.image }}
+      </fieldset>
+      <fieldset>
+        {{ form.text }}
+      </fieldset>
+      <fieldset>
+        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+      </fieldset>
+    </form>
+  </div>
+{% endblock %}

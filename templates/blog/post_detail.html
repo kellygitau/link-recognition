@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'assets/singlePost.css'%}" media="screen" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ post.title }}</title>
+  </head>
+  <body>
+    <h1 class="title">{{ post.title }}</h1>
+    <section data-page-name="about" class="page default">
+      {% if post.image %}
+      <img class="profile-img" src="{{ post.image.url }}" alt="{{ post.title }}" />
+      {% endif %}
+      <div class="about-me">
+          {% load humanize %}  <!-- Load the humanize template tags -->
+          <article>
+              <p>{{ post.text|urlize|linebreaks }}</p>
+          </article>
+      </div>
+    </section>
+    <script>
+      document.querySelectorAll(".about-me a").forEach((url) => {
+        // url.setAttribute("target", "_blank");
+        url.setAttribute("rel", "noopener noreferrer");
+        url.textContent = 'Get Started';
+    });
+    </script>
+  </body>
+</html>
