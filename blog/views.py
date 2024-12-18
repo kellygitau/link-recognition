@@ -49,7 +49,4 @@ def post_new(request):
             image=image
         )
         post.save()
-
-        # Return success response
-        return JsonResponse({'success': True, 'message': 'Post created successfully!'}, status=200)
     return render(request, 'blog/post_new.html')
