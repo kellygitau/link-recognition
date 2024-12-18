@@ -2,24 +2,25 @@
 
 {% block content %}
 <div class="form_container">  
-    <form id="contact" action="" method="post">
-      {% csrf_token %}
-      <h3>Add a new blog post</h3>
-      <fieldset>
-        {{ form.title }}
-      </fieldset>
-      <fieldset>
-        {{ form.author }}
-      </fieldset>
-      <fieldset>
-        {{ form.image }}
-      </fieldset>
-      <fieldset>
-        {{ form.text }}
-      </fieldset>
-      <fieldset>
+  <form id="contact" action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h3>Create a Post</h3>
+    <h4>Fill in the details below to create a new post!</h4>
+    <fieldset>
+        <input name="title" placeholder="Post Title" type="text" tabindex="1" required autofocus>
+    </fieldset>
+    <fieldset>
+        <textarea name="text" placeholder="Post Content" tabindex="2" required></textarea>
+    </fieldset>
+    <fieldset>
+        <input name="author" placeholder="Author Name" type="text" tabindex="3" required>
+    </fieldset>
+    <fieldset>
+        <input name="image" type="file" tabindex="4" accept="image/*">
+    </fieldset>
+    <fieldset>
         <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-      </fieldset>
-    </form>
+    </fieldset>
+</form>
   </div>
 {% endblock %}

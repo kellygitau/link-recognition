@@ -2,7 +2,7 @@ from django import forms
 from .models import Post
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
-
+from django.contrib import messages
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -37,15 +37,20 @@ class PostForm(forms.ModelForm):
                 }),
         }
 
-    def clean_text(self):
-        text = self.cleaned_data.get('text')
-        url_validator = URLValidator()
-        words = text.split()
-        for word in words:
-            try:
-                url_validator(word)
-            except ValidationError:
-                pass
-            else:
-                raise ValidationError(f"Text contains a URL: {word}")
-        return text
+        def clean_text(self):
+            text = self.cleaned_data.get('text')
+            url_validator = URLValidator()
+            words = text.split()
+            urls = []
+            for word in words:
+                try:
+                    url_validator(word)
+                except ValidationError:
+                    pass
+                else:
+                    urls.append(word)
+
+            if urls:
+                messages.warning(self.request, f"Text contains URLs: {', '.join(urls)}")
+
+            return text

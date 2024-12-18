@@ -289,6 +289,14 @@ body {
 	font-weight: 400;
 }
 
+#contact p .date, #contact p .author {
+  margin:15px 0 10px;
+  display:block;
+  font-size:13px;
+  color:#725050;
+  font-weight: 400;
+}
+
 #contact h4 {
 	margin:5px 0 15px;
 	display:block;

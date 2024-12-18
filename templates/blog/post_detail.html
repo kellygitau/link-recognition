@@ -14,6 +14,8 @@
   </head>
   <body>
     <h1 class="title">{{ post.title }}</h1>
+    <p class="date">{{ post.date }}</p>
+    <p class="author">Article Authored by {{ post.author }}</p>
     <section data-page-name="about" class="page default">
       {% if post.image %}
       <img class="profile-img" src="{{ post.image.url }}" alt="{{ post.title }}" />
@@ -29,7 +31,7 @@
       document.querySelectorAll(".about-me a").forEach((url) => {
         url.setAttribute("target", "_blank");
         url.setAttribute("rel", "noopener noreferrer");
-        url.textContent = 'Get Started';
+        url.textContent = 'Learn More';
     });
     </script>
   </body>
